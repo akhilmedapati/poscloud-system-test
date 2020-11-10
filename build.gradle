@@ -1,0 +1,49 @@
+buildscript {
+    ext {
+        springBootPluginVersion = "2.2.6.RELEASE"
+        springfoxSwagger2Version = "2.7.0"
+    }
+}
+
+plugins {
+    id "java-library"
+    id "maven-publish"
+//    id 'checkstyle'
+}
+
+sourceCompatibility = "1.8"
+
+apply from: "build.repository.gradle"
+apply from: "build.test.gradle"
+
+//tasks.withType(Checkstyle) {
+//    exclude '**/dto/**'
+//}
+
+dependencies {
+
+    // Spring
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.3.4.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: '2.3.4.RELEASE'
+
+// https://mvnrepository.com/artifact/org.springframework/spring-web
+    compile group: 'org.springframework', name: 'spring-web', version: '2.3.4.RELEASE'
+
+// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.3.4.RELEASE'
+
+    testCompile group: 'io.rest-assured', name: 'rest-assured', version: '3.3.0'
+    // https://mvnrepository.com/artifact/junit/junit
+    testCompile group: 'junit', name: 'junit', version: '4.13'
+
+}
+
+test {
+    useJUnitPlatform()
+}
+
+
+
+	
+
+

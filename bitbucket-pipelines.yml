@@ -1,0 +1,9 @@
+image: openjdk:11
+
+pipelines:
+  default:
+    - step:
+        caches:
+          - gradle
+        script:
+          - bash ./gradlew -PpayfactoArtifactoryUrl=$ARTIFACTORY_URL -PpayfactoArtifactoryDeployUrl=$ARTIFACTORY_DEPLOY_URL -PpayfactoArtifactoryUser=$ARTIFACTORY_USER -PpayfactoArtifactoryPassword=$ARTIFACTORY_PASSWORD build -x test

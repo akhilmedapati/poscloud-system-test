@@ -1,0 +1,5 @@
+/application-prod.yml
+/application-stage.yml
+/application.yml
+/com/
+/bitbucket-pipelines.yml

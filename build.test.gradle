@@ -1,0 +1,33 @@
+ext {
+    set("snippetsDir", file("build/generated-snippets"))
+}
+
+dependencies {
+    testImplementation("org.springframework.boot:spring-boot-starter-test") {
+        exclude group: "org.junit.vintage", module: "junit-vintage-engine"
+    }
+
+    testImplementation "junit:junit:4.12"
+    testImplementation "io.rest-assured:rest-assured:4.3.1"
+}
+
+test {
+    useJUnitPlatform()
+}
+
+
+def prodQA = tasks.register("prodQA", Test) {
+    useJUnitPlatform()
+    doFirst {
+        systemProperty 'spring.profiles.active', 'prod'
+    }
+
+}
+def stageQA = tasks.register("stageQA", Test) {
+    useJUnitPlatform()
+    doFirst {
+        systemProperty 'spring.profiles.active', 'stage'
+    }
+    include '**/authentication/*'
+
+}

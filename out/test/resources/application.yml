@@ -1,0 +1,6 @@
+spring:
+  profiles:
+    active: qa
+
+authentication:
+  baseUrl: https://pos.veloce.com
